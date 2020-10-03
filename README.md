@@ -19,6 +19,7 @@ A fejlesztéshez – mivel egy dinamikus tartalmú oldalról beszélünk – ada
 A Laravel-t telepíteni kell a honlapján megadott útmutató szerint.
 A projekt mappában megnyitott PowerShell (PS) terminállal vihetjük be a parancssoros utasításokat (pl.: php artisan serve).
 A fejlesztés alatt álló oldalt a Firefox böngésző segítségével jelenítem meg, illetve használom annak Fejlesztő eszközét (F12).
+
 ## Project létrehozása
 
 Hozzuk létre a projekteket tartalmazó mappát (pl.: …Laravel)
