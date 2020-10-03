@@ -1,61 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# <p align="center">HasznaltAru projekt</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## <p align="center">tervezés, létrehozás Laravel segítségével</p>
 
-## About Laravel
+## feladat:
+megtervezni a Metripond Plus Kft. inaktív termékeinek ismertető felületét, mely a metripondplus.hu honlapot egészíti ki.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## terv:
+1.	a metripondplus.hu aldoménje lesz: hasznaltaru.metripondplus.hu,
+2.	az oldal címe: Metripond Plus Kft börze,
+3.	a termékek egy oldalon jelennek meg kártyákon elhelyezve,
+4.	a kártyák a kapcsolattartó adatait, elérhetőségét is tartalmazza,
+5.	az oldal reszponzív,
+6.	az oldal alján footer – lábléc a fődoménre mutató hivatkozásokkal, általános elérhetőséggel,
+7.	az aldomén bejelentkezést tesz lehetővé, mellyel a kapcsolattartó és a termékek adatai szerkeszthetők,
+## Előszó
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+A fejlesztéshez – mivel egy dinamikus tartalmú oldalról beszélünk – adatbázis-kiszolgáló és PHP is szükséges. A Windows 10 alatt fejlesztendő projekthez MySQL adatbázis-kezelőt (8.0.20 Community) és Workbench 8.0 segédprogramot használom. A PHP 7.4 értelmezője mellett a telepítésre került a Brackets nevű szerkesztő, mellyel a projektek mappáiban könnyedén navigálhatok, a kiválasztott fájlokat szerkeszthetem.
+A Laravel-t telepíteni kell a honlapján megadott útmutató szerint.
+A projekt mappában megnyitott PowerShell (PS) terminállal vihetjük be a parancssoros utasításokat (pl.: php artisan serve).
+A fejlesztés alatt álló oldalt a Firefox böngésző segítségével jelenítem meg, illetve használom annak Fejlesztő eszközét (F12).
+## Project létrehozása
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Hozzuk létre a projekteket tartalmazó mappát (pl.: …Laravel)
+…\Laravel> PowerShell
+	Laravel new HasznaltAru
+…\Laravel> cd HasznaltAru
+…\Laravel\HasznaltAru> php artisan serve
 
-## Learning Laravel
+(Az Avast víruskereső kártékonynak ítéli a server.php-t; hozzá kell a kivételekhez)
+A fenti parancs kiadása után tájékoztat a Laravel, hogy a http://127.0.0.1:8000 címen elindult a fejlesztő szerver.
+A böngészőbe beírva a címet láthatjuk az alapproject kezdőoldalát:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+ 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+A serverszolgáltatást kikapcsolni a Ctrl+C paranccsal tudunk, melyet a PS ablakban kell használni. Ekkor visszakapjuk a projektünk útvonalát, valamint a kurzort – az exit paranccsal bezárhatjuk a PS-t.
+Ha elindítjuk a Bracket szerkesztőt és kiválasztjuk a …Laravel\HasznaltAru mappát, akkor megtekinthetjük a projektünk mappaszerkezetét:
 
-## Laravel Sponsors
+ 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Erről bővebben a https://laravel.com/docs/8.x/structure oldalon olvashatunk.
 
-### Premium Partners
+## Bejelentkezés, felhasználó-kezelés szolgáltatás
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+A HasznaltAru adminisztrációs oldalát csak bejelentkezés után lehet elérni. Ehhez a Laravel Jetstream modult használjuk.
 
-## Contributing
+…\Laravel\HasznaltAru> composer require laravel/jetstream
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+…\Laravel\HasznaltAru> php artisan jetstream:install livewire
 
-## Code of Conduct
+…\Laravel\HasznaltAru> npm install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+…\Laravel\HasznaltAru> npm run dev
 
-## Security Vulnerabilities
+A Brackets segítségével szerkesszük a project gyökerében lévő .env fájl:
+a DB-vel kezdődő sorokban be kell állítani az adatbázisra vonatkozó paramétereket. A _DATABASE, _USERNAME, és _PASSWORD paramétert állítsuk be, majd a Workbench segítségével hozzuk létre a _DATABASE paramétereként megadott nevű adatbázist. Ezek után lefuttatható a lenti parancs:
+…\Laravel\HasznaltAru> php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Ez létrehozza a Jetstream működéséhez szükséges adattáblákat (a …Laravel\HasznaltAru\database\migrations\ mappában található osztályok segítségével.
