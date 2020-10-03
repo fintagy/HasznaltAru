@@ -1,6 +1,6 @@
 # <p align="center">HasznaltAru projekt</p>
 
-## <p align="center">tervezés, létrehozás Laravel segítségével</p>
+## <p align="center">tervezés, létrehozás Laravel segítségével </p>
 
 ## feladat:
 megtervezni a Metripond Plus Kft. inaktív termékeinek ismertető felületét, mely a metripondplus.hu honlapot egészíti ki.
@@ -32,7 +32,7 @@ Hozzuk létre a projekteket tartalmazó mappát (pl.: …Laravel)
 A fenti parancs kiadása után tájékoztat a Laravel, hogy a http://127.0.0.1:8000 címen elindult a fejlesztő szerver.
 A böngészőbe beírva a címet láthatjuk az alapproject kezdőoldalát:
 
- 
+![Alt text](resources/src/Project_kezdő_oldal.png?raw=true "Title")
 
 A serverszolgáltatást kikapcsolni a Ctrl+C paranccsal tudunk, melyet a PS ablakban kell használni. Ekkor visszakapjuk a projektünk útvonalát, valamint a kurzort – az exit paranccsal bezárhatjuk a PS-t.
 Ha elindítjuk a Bracket szerkesztőt és kiválasztjuk a …Laravel\HasznaltAru mappát, akkor megtekinthetjük a projektünk mappaszerkezetét:
