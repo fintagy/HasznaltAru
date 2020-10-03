@@ -1,5 +1,5 @@
-HasznaltAru project
-tervezés, létrehozás Laravel segítségével
+#HasznaltAru project
+##tervezés, létrehozás Laravel segítségével
 Előszó	2
 Project létrehozása	2
 Bejelentkezés, felhasználó-kezelés szolgáltatás	4
