@@ -13,10 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+Route::resource('/', 'App\Http\Controllers\TermekController');
+
+Route::resource('/dashboard', App\Http\Controllers\itemsController::class);
+
+Route::resource('/edit', App\Http\Controllers\EditController::class);
+
+/*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard');*/
