@@ -23,6 +23,8 @@ Route::resource('/dashboard', App\Http\Controllers\itemsController::class);
 
 Route::resource('/edit', App\Http\Controllers\EditController::class);
 
-/*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');*/
+/*Route::middleware(['auth:sanctum', 'verified'])
+    ->get('/dashboard', function () {
+            return view('dashboard');
+        })
+    ->name('dashboard');*/

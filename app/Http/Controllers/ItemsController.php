@@ -31,8 +31,26 @@ class itemsController extends Controller
                      'hasznalt_kapcsolats.imel')
 			->orderby ('hasznalt_termeks.id')
             ->get();
-		
-		return view('dashboard', array('titems' => $tkartya));
+        
+        $tlistak = DB::table('hasznalt_termeks')                       
+                    ->select('nev1', 'nev2')
+                    ->groupBy('nev1', 'nev2')
+                    ->get();
+        
+        $termek = DB::table('hasznalt_termeks')                      
+            ->select('hasznalt_termeks.id',
+                     'hasznalt_termeks.nev2',
+                     'hasznalt_termeks.ar',
+                     'hasznalt_termeks.nev1',
+                     'hasznalt_termeks.termkeputvonal',
+					 'hasznalt_termeks.leiras',
+                     'hasznalt_termeks.allapot',
+                     'hasznalt_termeks.db',
+                     'hasznalt_termeks.updated_at')
+            ->where ('hasznalt_termeks.id', 0)			
+            ->get();        
+        
+		return view('dashboard', array('titem1' => $termek, 'tlists' => $tlistak, 'titems' => $tkartya));
     }
     /**
      * Show the form for creating a new resource.
@@ -63,6 +81,30 @@ class itemsController extends Controller
      */
     public function show($id)
     {
+        $tkartya = DB::table('hasznalt_termeks')
+            ->join('hasznalt_kapcsolats', 'hasznalt_termeks.kapcs_id', '=', 'hasznalt_kapcsolats.id')            
+            ->select('hasznalt_termeks.id',
+                     'hasznalt_termeks.nev2',
+                     'hasznalt_termeks.ar',
+                     'hasznalt_termeks.nev1',
+                     'hasznalt_termeks.termkeputvonal',
+					 'hasznalt_termeks.leiras',
+                     'hasznalt_termeks.allapot',
+                     'hasznalt_termeks.db',
+                     'hasznalt_termeks.updated_at',                     
+					 'hasznalt_kapcsolats.nev',
+                     'hasznalt_kapcsolats.kapcskeputvonal',
+                     'hasznalt_kapcsolats.telefonsz',
+					 'hasznalt_kapcsolats.telefonkiir',
+                     'hasznalt_kapcsolats.imel')
+			->orderby ('hasznalt_termeks.id')
+            ->get();        
+        
+        $tlistak = DB::table('hasznalt_termeks')                       
+                    ->select('nev1', 'nev2')
+                    ->groupBy('nev1', 'nev2')
+                    ->get();
+        
         //$termek = \App\hasznalt_termek::find(1);
         $termek = DB::table('hasznalt_termeks')                      
             ->select('hasznalt_termeks.id',
@@ -74,11 +116,17 @@ class itemsController extends Controller
                      'hasznalt_termeks.allapot',
                      'hasznalt_termeks.db',
                      'hasznalt_termeks.updated_at')
-            ->where ('id', 1)
+            ->where ('id', $id)
 			->orderby ('hasznalt_termeks.id')
             ->get();
         
-      return view('dashboard', array('titems' => $termek));
+        if (empty($termek)){
+                echo 'üres';
+            } else {
+                echo 'teli'; //{{$titem1[0] -> leiras}}
+            }
+        
+      return view('dashboard', array('titem1' => $termek, 'tlists' => $tlistak, 'titems' => $tkartya));
     
     }
 	

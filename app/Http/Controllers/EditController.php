@@ -48,7 +48,6 @@ class EditController extends Controller
                     ->groupBy('nev1', 'nev2')
                     ->get();
 		
-		
         
         
         //$termek = \App\hasznalt_termek::find(1);
@@ -66,7 +65,7 @@ class EditController extends Controller
 			->orderby ('hasznalt_termeks.id')
             ->get();
         
-      return view('edit', array('titems' => $termek, 'tlists' => $tlistak));
+      return view('edit', array('titems' => $termek, 'tlists' => $tlistak, 'tlists' => $tkartya));
     
     }
 	
